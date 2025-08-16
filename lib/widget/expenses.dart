@@ -1,5 +1,6 @@
-import 'package:expenses_tracker_flutter/widget/expenses_list.dart';
+import 'package:expenses_tracker_flutter/widget/expenses_list/expenses_list.dart';
 import 'package:expenses_tracker_flutter/models/expense.dart';
+import 'package:expenses_tracker_flutter/widget/new_expense.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
@@ -29,8 +30,7 @@ class _ExpensesState extends State<Expenses> {
   ];
 
   void _openAddExpenseModal() {
-    showModalBottomSheet(
-        context: context, builder: (ctx) => Text('ModalBottomSheet'));
+    showModalBottomSheet(context: context, builder: (ctx) => NewExpense());
   }
 
   @override
