@@ -23,8 +23,8 @@ class ChartBar extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(8)),
               color: isDarkMode
-                  ? Theme.of(context).colorScheme.secondary
-                  : Theme.of(context).colorScheme.primary,
+                  ? Color.fromRGBO(255, 255, 255, 255)
+                  : Color.fromRGBO(0, 0, 0, 255),
             ),
           ),
         ),
