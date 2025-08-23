@@ -19,7 +19,7 @@ class _ExpensesState extends State<Expenses> {
         date: DateTime(2025, 8, 15),
         category: Category.food),
     Expense(
-        title: 'Car',
+        title: 'Movies',
         amount: 59.99,
         date: DateTime(2025, 8, 12),
         category: Category.leasure),
@@ -66,6 +66,10 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
+
+    var landscape = (deviceHeight > deviceWidth) ? true : false;
     Widget mainContent =
         const Center(child: Text('No expenses added, start adding expenses'));
 
@@ -83,13 +87,20 @@ class _ExpensesState extends State<Expenses> {
           IconButton(onPressed: _openAddExpenseModal, icon: Icon(Icons.add))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent)
-        ],
-      ),
+      body: landscape
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: mainContent)
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(child: mainContent)
+              ],
+            ),
     );
   }
 }
